@@ -94,12 +94,8 @@ function makeToDos(){
 
 function parser(){
 	var elementList = document.querySelector("article");
-	var pElementList = elementList.getElementsByTagName('p')
-	for (var i in pElementList){
-		// var hr = document.createElement('hr');
-		console.log(pElementList[i])
-		pElementList[i].insertAdjacentHTML('afterend', '</hr>');
-	}
+	var pElementList = elementList.querySelectorAll('p')
+	pElementList.forEach(p => p.insertAdjacentHTML('afterend', '<hr/>'))
 }
 
 
