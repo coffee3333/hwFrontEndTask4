@@ -92,30 +92,85 @@ function makeToDos(){
 	}
 }
 
-function parser(){
+function articleScraper(){
 	var elementList = document.querySelector("article");
 	var pElementList = elementList.querySelectorAll('p')
 	pElementList.forEach(p => p.insertAdjacentHTML('afterend', '<hr/>'))
 }
 
+function itemChange(){
+	var elementList = document.getElementById("cart-items");
+	var divElements = elementList.querySelectorAll('div');
+	var findToRemove = "Cola";
+	var findToChange = "Chocolate"
+	findToRemove.toUpperCase();
+	findToChange.toUpperCase();
+
+	var sp = document.createElement("span");
+	var newDiv = document.createElement("div");
+	newDiv.setAttribute("class", "item");
+	sp.setAttribute("class", "qty");
+	newDiv.appendChild(document.createTextNode("Canned Fish"));
+	sp.appendChild(document.createTextNode("x 3"));
+	newDiv.appendChild(sp);
+
+
+
+	for (var i  = 0; i < divElements.length; i++){
+		var divElement = divElements[i];
+		var txtValue = divElement.textContent || divElement.innerText;
+		// var divChng = divElements[i].parentNode;
+
+		if (txtValue.indexOf(findToRemove) !== -1){
+			divElements[i].remove();
+		}
+		if (txtValue.indexOf(findToChange) !== -1){
+			// divElements.replaceChild(newDiv, divElements[i]);
+		}
+
+	}
+	elementList.appendChild(newDiv);
+}
 
 
 
 
+function tasksAppender(){
 
+	while (true){
+		var ul = document.getElementById("dynamic-todo-list");
+		var value = prompt("Enter the task", '')
 
+		if (value == null || value == ""){
+			break;
+		}
+		var li = document.createElement("li");
+		li.appendChild(document.createTextNode(value));
+		ul.appendChild(li);
+	}
+}
 
+//answer for 1st task: it would write 10s because cicle write i in one memory
 
-// drawSmile();
-// getPatter();
-// makeToDos();
-parser();
+getDate(); //first task
 
+//second tasks
+reverser(123);
+factorial(5);
+largFinder(1, 5);
+joiner([1,2,3]);
+month_name(new Date("11/13/2014"));
+upperTester("Asd");
 
+//4th tasks
+drawSmile();
+getPatter();
+makeToDos();
+articleScraper();
+itemChange();
 
-
-
-
+//last one
+tasksAppender();
 
 
 
